@@ -1,5 +1,6 @@
 package br.com.cert5;
 
+import java.io.IOException;
 import java.text.ParseException;
 
 /**
@@ -75,4 +76,23 @@ public class Assertivas {
 		a.go(4);
 		a.go2(2);
 	}
+	
+	
+	/**
+	 * O que pode vir apos assert?
+	 */
+	
+	void aposAssert(){
+		int x = 4;
+		int y = 1;
+		assert(x > 3): "";
+		assert(x > 3): new Integer("5");
+		assert(x > 3): metodoQualquer();
+		assert(x > 3): y = 2;
+		
+		// invalido
+		// assert(x > 3): int yy = 2;
+	}
+	
+	Object metodoQualquer() { return new Object(); }
 }

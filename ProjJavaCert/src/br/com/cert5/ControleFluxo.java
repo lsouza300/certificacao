@@ -13,6 +13,7 @@ public class ControleFluxo {
 			case 1: System.out.println("1"); break;
 			case 2: System.out.println("2"); break;
 			case 3: System.out.println("3"); break;
+
 		}
 		switch(a){
 			case 1: System.out.println("1"); break;
@@ -44,6 +45,9 @@ public class ControleFluxo {
 			/*case 4 {
 				int j = 1;
 			}*/
+			
+			// porem lembrar do caso abaixo (valido) - apos os dois pontos, ter as chaves separando
+			case 10: {System.out.println("oi");}
 				
 			// muito grande para ser byte
 			// Type mismatch: cannot convert from int to byte
