@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 public class TesteFiles {
 
@@ -89,19 +90,46 @@ public class TesteFiles {
 		//}
 	}
 	
-	void testeBufferReaderAndWriter() throws FileNotFoundException{
+	void testeBufferReaderAndWriter() throws IOException{
 		File f = new File("a.txt");
+		
+		PrintWriter pw = new PrintWriter(f);
+		pw.write("Em uma linha eu escrevo isso... \n");
+		pw.write("Em outra linha eu escrevo aquilo...\n");
+		pw.write("No final eu tenho um texto completo...");
+		pw.flush();
+		pw.close();
+		
 		FileReader fr = new FileReader(f); // exige FileNotFoundException
 		BufferedReader br = new BufferedReader(fr);
-		
 		String x;
-		//while (br.readLine() != ){
-			
+		while ( (x = br.readLine()) != null){
+			System.out.println(x);
+		}
+		br.close();
+		fr.close();
+		
+
+		//PrintWriter p = new PrintWriter(f);
+		pw.append("Esqueci de escrever essa linha, entao utilizo o append... ");
+		pw.flush();
+		pw.close();
+
+		System.out.println("\nIrei realizar a leitura novamente...\n");
+		fr = new FileReader(f); // exige FileNotFoundException
+		br = new BufferedReader(fr);
+		while ( (x = br.readLine()) != null){
+			System.out.println(x);
+		}
+		br.close();
 		
 	}
+	
 
 	public static void main(String[] args) throws IOException {
 		//new TesteFiles().testeFileReaderWriter();
-		new TesteFiles().testeDirectory();
+		//new TesteFiles().testeDirectory();
+		new TesteFiles().testeBufferReaderAndWriter();
+		
 	}
 }
